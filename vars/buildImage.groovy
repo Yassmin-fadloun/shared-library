@@ -1,5 +1,5 @@
-def call() {
+def call(String imageTag = "${env.DOCKER_IMAGE}") {
     script {
-        docker.build("${env.DOCKER_IMAGE}")
+        sh "docker build -t ${imageTag} ."
     }
 }
