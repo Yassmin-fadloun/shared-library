@@ -1,7 +1,7 @@
 def call() {
     stage('Push Manifests ') {
         withCredentials([usernamePassword(
-            credentialsId: 'github-creds', 
+            credentialsId: 'docker-hub-creds', 
             usernameVariable: 'GIT_USER', 
             passwordVariable: 'GIT_TOKEN'
         )]) {
