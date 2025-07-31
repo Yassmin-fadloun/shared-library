@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-deployment
-  namespace: app-namespace
+  name:  app-deployment
+  namespace: ivolve
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: my-app
@@ -14,14 +14,8 @@ spec:
         app: my-app
     spec:
       containers:
-      - name: app-container
-        image: your-docker-repo/your-app:latest # Will be updated by pipeline
+      - name: my-app
+        image:  yassminfadloun/your-app:11
+        imagePullPolicy: Always
         ports:
-        - containerPort: 80
-        resources:
-          requests:
-            cpu: "100m"
-            memory: "128Mi"
-          limits:
-            cpu: "500m"
-            memory: "512Mi"
+        - containerPort: 5000
