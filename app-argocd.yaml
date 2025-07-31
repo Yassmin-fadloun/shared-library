@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/Shahdhussien/shared-library-repo-.git'
+    repoURL: 'https://github.com/Yassmin-fadloun/shared-library.git'
     targetRevision: HEAD
     path: K8s
   destination:
