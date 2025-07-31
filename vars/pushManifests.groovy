@@ -1,7 +1,7 @@
 def call() {
     stage('Push Manifests ') {
         // Use Secret Text for GitHub token
-        withCredentials([string(credentialsId: 'github-pat', variable: 'GIT_TOKEN')]) {
+        withCredentials([string(credentialsId: 'github-creds', variable: 'GIT_TOKEN')]) {
             sh '''
                 git config user.name "Jenkins"
                 git config user.email "jenkins@example.com"
