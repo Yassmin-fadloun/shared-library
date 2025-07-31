@@ -6,7 +6,7 @@ def call() {
             passwordVariable: 'DOCKER_PASS'
         )]) {
             sh "echo ${DOCKER_PASS} | docker login -u ${DOCKER_USER} --password-stdin"
-            sh "docker push yassminfadl0un/your-app:${env.BUILD_NUMBER}"
+            sh "docker push yassminfadloun/your-app:${env.BUILD_NUMBER}"
         }
     }
 }
