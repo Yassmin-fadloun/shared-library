@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: my-app
-        image:  yassminfadloun/your-app:11
+        image: yassminfadloun/your-app:22
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
