@@ -4,7 +4,7 @@ pipeline {
     agent any
     
     environment {
-        DOCKER_IMAGE = "your-docker-repo/your-app:${BUILD_NUMBER}"
+         DOCKER_IMAGE = "yassminfadl0un/your-app:${BUILD_NUMBER}"
     }
     
     stages {
