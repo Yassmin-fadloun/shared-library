@@ -1,9 +1,5 @@
-def call(String imageTag = "${env.DOCKER_IMAGE}") {
+def call() {
     script {
-        echo "=== Running Trivy scan for image: ${imageTag} ==="
-        sh """
-        # Run Trivy scan, show CRITICAL issues, but don't stop the pipeline if found
-        trivy image --severity CRITICAL --exit-code 1 ${imageTag} || true
-        """
+        sh "trivy image --severity CRITICAL --exit-code 1 yassminfadl0un/your-app:${env.BUILD_NUMBER}"
     }
 }
