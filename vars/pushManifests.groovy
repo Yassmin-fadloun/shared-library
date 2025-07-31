@@ -1,17 +1,24 @@
 def call() {
-    script {
+    stage('Push Manifests ') {
         withCredentials([usernamePassword(
-            credentialsId: 'github-creds',
-            usernameVariable: 'GIT_USER',
-            passwordVariable: 'GIT_PASS'
+            credentialsId: 'github-creds', 
+            usernameVariable: 'GIT_USER', 
+            passwordVariable: 'GIT_TOKEN'
         )]) {
-            sh """
-                git config --global user.email "jenkins@example.com"
-                git config --global user.name "Jenkins"
-                git add .
-                git commit -m 'Updated manifests for ${env.BUILD_NUMBER}'
-                git push https://${GIT_USER}:${GIT_PASS}@github.com/Shahdhussien/shared-library-repo-.git HEAD:main
-            """
+            sh '''
+                git config user.name "Jenkins"
+                git config user.email "jenkins@example.com"
+                git remote set-url origin https://${GIT_USER}:${GIT_TOKEN}@github.com/Yassmin-fadloun/shared-library.git
+                git fetch origin
+                git checkout -B main origin/main
+                git add -A
+                git commit -m "Update manifests from Jenkins pipeline" || echo "No changes"
+                git push origin main
+            '''
+
         }
     }
 }
+
+
+
