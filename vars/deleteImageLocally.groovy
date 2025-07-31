@@ -1,5 +1,6 @@
 def call() {
-    script {
-        sh "docker rmi ${env.DOCKER_IMAGE} || true"
+    stage('Delete Image Locally ') {
+        echo ' Deleting local Docker image...'
+        sh """ docker rmi yassminfadloun/your-app:$BUILD_NUMBER|| true"""
     }
 }
