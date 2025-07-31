@@ -1,9 +1,7 @@
-def call(String imageTag = "${env.DOCKER_IMAGE}") {
-    script {
-        // Always use your real Docker Hub repo
-        def fullImageTag = "yassminfadloun/your-app:${env.BUILD_NUMBER}"
-        sh "docker build -t ${fullImageTag} ."
-        // Update the environment variable so pushImage.groovy uses it too
-        env.DOCKER_IMAGE = fullImageTag
+def call() {
+    stage('Build Image ') {
+        echo ' Building Docker image...'
+        sh """docker build -t yassminfadloun/your-app:$BUILD_NUMBER ."""
+        
     }
 }
