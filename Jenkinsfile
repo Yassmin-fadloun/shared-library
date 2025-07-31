@@ -1,53 +1,19 @@
 @Library('shared-library') _
 
 pipeline {
-    agent any
-    
-    environment {
-         DOCKER_IMAGE = "yassminfadl0un/your-app:${BUILD_NUMBER}"
-    }
-    
-    stages {
-        stage('Build Image') {
+     agent { label 'jenkins-agent-1' }
+
+        stages {
+        stage('Pipeline Steps') {
             steps {
                 buildImage()
-            }
-        }
-        
-        stage('Scan Image') {
-            steps {
                 scanImage()
-            }
-        }
-        
-        stage('Push Image') {
-            steps {
                 pushImage()
-            }
-        }
-        
-        stage('Delete Image Locally') {
-            steps {
                 deleteImageLocally()
-            }
-        }
-        
-        stage('Update Manifests') {
-            steps {
                 updateManifests()
-            }
-        }
-        
-        stage('Push Manifests') {
-            steps {
                 pushManifests()
             }
         }
-    }
-    
-    post {
-        always {
-            cleanWs()
-        }
-    }
+   }
 }
+
