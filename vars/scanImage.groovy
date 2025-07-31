@@ -1,5 +1,11 @@
 def call() {
-    script {
-       sh "trivy image --severity CRITICAL --exit-code 0 ${env.DOCKER_IMAGE}"
+    stage('Scan Image ') {
+        echo ' Scanning Docker image...'
+        withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+        sh """
+        pwd
+        trivy image $DOCKER_USER/your-app:$BUILD_NUMBER
+        """
+        }
     }
 }
